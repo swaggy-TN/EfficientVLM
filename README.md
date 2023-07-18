@@ -111,8 +111,12 @@ Our code and scripts are based on [X-VLM](https://github.com/zengyan-97/X-VLM) a
 ## Citation
 If you find this repository useful, please considering giving ⭐ or citing:
 ```
-
-
+@article{wang2022efficientvlm,
+  title={Efficientvlm: Fast and accurate vision-language models via knowledge distillation and modal-adaptive pruning},
+  author={Wang, Tiannan and Zhou, Wangchunshu and Zeng, Yan and Zhang, Xinsong},
+  journal={arXiv preprint arXiv:2210.07795},
+  year={2022}
+}
 ```
 
 ### Contact
