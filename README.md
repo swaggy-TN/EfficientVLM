@@ -111,7 +111,8 @@ Our code and scripts are based on [X-VLM](https://github.com/zengyan-97/X-VLM) a
 ## Citation
 If you find this repository useful, please considering giving ⭐ or citing:
 ```
-TBD
+
+
 ```
 
 ### Contact
