@@ -1,0 +1,13 @@
+timm==0.4.9
+transformers==4.12.5
+scipy==1.7.3
+scikit-learn
+ruamel_yaml
+opencv-python
+scikit-image
+matplotlib
+pycocotools
+pycocoevalcap
+datasets
+sentencepiece
+einops

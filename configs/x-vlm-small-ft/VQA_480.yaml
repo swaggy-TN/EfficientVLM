@@ -1,0 +1,37 @@
+train_file: ['data/finetune/vqa_train.json',
+             'data/finetune/vqa_val.json',
+             'data/finetune/vg_qa.json']
+# train_file: ['data/finetune/vqa_train100.json']
+
+test_file: ['data/finetune/vqa_test.json']
+answer_list: 'data/finetune/answer_list.json'
+
+vqa_root: 'images/coco/'
+vg_root: 'images/visualgenome/'
+
+## Vision Encoder
+use_clip_vit: True
+vision_config: 'configs/config_clipvit_small.json'
+image_res: 480
+patch_size: 16
+
+## Text Encoder (& Cross Encoder)
+text_encoder: 'data/bert-base-uncased'
+text_num_hidden_layers: 6  # 3 for text encoder, 3 for cross encoder
+
+
+## Training
+num_dec_layers: 3
+batch_size_train: 16
+batch_size_test: 24
+max_tokens: 40
+k_test: 128
+
+sparsity: 0.35 
+## Other Settings
+optimizer: {opt: adamW, lr: 5e-5, reg_learning_rate: 0.01, weight_decay: 0.01, lr_mult: 2}
+schedular: {sched: linear, lr: 5e-5, epochs: 20, num_warmup_steps: 0.1}
+L0_schedular: {droprate_init: 0.5,temperature: 0.6667,lagrangian_warmup_epochs: 1}
+start_eval: 15  # epoch index
+
+

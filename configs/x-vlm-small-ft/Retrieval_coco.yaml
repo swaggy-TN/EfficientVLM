@@ -1,0 +1,32 @@
+train_file:  ['data/finetune/coco_train.json']
+val_file: 'data/finetune/coco_val.json'
+test_file: 'data/finetune/coco_test.json'
+image_root: 'images/coco/'
+
+
+## Vision Encoder
+use_clip_vit: True
+vision_config: 'configs/config_clipvit_small.json'
+image_res: 384
+patch_size: 16
+
+## Text Encoder (& Cross Encoder)
+text_encoder: 'data/bert-base-uncased'
+text_config: 'data/bert-base-uncased/config.json'
+text_num_hidden_layers: 6  # 3 for text encoder, 3 for cross encoder
+
+
+## Training
+batch_size_train: 24
+batch_size_test: 24
+batch_size_test_text: 64
+max_tokens: 40
+embed_dim: 256
+temp: 0.07
+k_test: 256
+
+## Other Settings
+sparsity: 0.25
+optimizer: {opt: adamW, lr: 3e-5,reg_learning_rate: 0.01, weight_decay: 0.01, lr_mult: 2}
+schedular: {sched: linear, lr: 3e-5, epochs: 10, num_warmup_steps: 0.1}
+L0_schedular: {epochs: 10,droprate_init: 0.5,temperature: 0.6667,lagrangian_warmup_epochs: 1,prepruning_finetune_steps: 1}

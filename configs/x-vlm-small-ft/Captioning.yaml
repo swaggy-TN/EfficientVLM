@@ -1,0 +1,40 @@
+train_file: ['data/finetune/coco_karpathy/coco_karpathy_train.json']
+val_file: 'data/finetune/coco_karpathy/coco_karpathy_val.json'
+test_file: 'data/finetune/coco_karpathy/coco_karpathy_test.json'
+
+image_root: 'images/coco/'
+val_gt_file: 'data/finetune/coco_karpathy/coco_karpathy_val_gt.json'
+test_gt_file: 'data/finetune/coco_karpathy/coco_karpathy_test_gt.json'
+
+## Vision Encoder
+use_clip_vit: True
+vision_config: 'configs/config_clipvit_small.json'
+image_res: 384
+patch_size: 16
+
+## Text Encoder (& Cross Encoder)
+text_encoder: 'data/bert-base-uncased'
+text_num_hidden_layers: 6  # 3 for text encoder, 3 for cross encoder
+
+
+## Training
+num_dec_layers: 6  
+batch_size_train: 32
+batch_size_test: 32
+max_tokens: 40  
+label_smoothing: 0.1
+
+sparsity: 0.25
+## generation configs
+max_length: 20
+min_length: 5
+num_beams: 3
+prompt: 'a picture of '
+
+
+## Other Settings
+optimizer: {opt: adamW, lr: 1e-5, reg_learning_rate: 0.01, weight_decay: 0.01, lr_mult: 2}
+schedular: {sched: linear, lr: 1e-5, epochs: 10, num_warmup_steps: 0.1}
+L0_schedular: {droprate_init: 0.5,temperature: 0.6667,lagrangian_warmup_epochs: 1,prepruning_finetune_steps: 1}
+start_eval: 0  # epoch index
+
